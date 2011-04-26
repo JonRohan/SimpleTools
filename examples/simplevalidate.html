@@ -1,7 +1,61 @@
 <!DOCTYPE html>
 <html>
   <body>
+    <h1>SimpleValidate Example</h1>
     
-    
+    <h2>Code</h2>
+    <code><pre>
+      &lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+      &lt;script type="text/javascript" src="../src/simplevalidate.js"></script>
+      &lt;script type="text/javascript">
+        $(function(){
+          new SimpleValidate($("#text-validate, #email-validate"), {
+              onValidating:function(message) {
+                $(this).parents("fieldset:eq(0)").find(".feedback").text(message);
+              },
+              onInvalid:function(message) {
+                $(this).parents("fieldset:eq(0)").find(".feedback").text(message);
+              },
+              onValid:function() {
+                $(this).parents("fieldset:eq(0)").find(".feedback").text("");
+              }
+          });
+        });
+      &lt;/script>
+    </pre></code>
+    <h2>Demo</h2>
+    <form>
+      <fieldset>
+        <legend>Validate Text Exists</legend>
+        <p>This checks that the input has some kinda text, that isn't just a space</p>
+        <div><span class="feedback"></span></div>
+        <input type="text" rule="text" id="text-validate"/>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Validate Email</legend>
+        <p>Check that the user has a valid email</p>
+        <div><span class="feedback"></span></div>
+        <input type="text" rule="email" id="email-validate"/>
+      </fieldset>
+      <br>
+    </form>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="../src/simplevalidate.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        new SimpleValidate($("#text-validate, #email-validate"), {
+            onValidating:function(message) {
+              $(this).parents("fieldset:eq(0)").find(".feedback").text(message);
+            },
+            onInvalid:function(message) {
+              $(this).parents("fieldset:eq(0)").find(".feedback").text(message);
+            },
+            onValid:function() {
+              $(this).parents("fieldset:eq(0)").find(".feedback").text("");
+            }
+        });
+      });
+    </script>
   </body>
 </html>

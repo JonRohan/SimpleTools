@@ -217,6 +217,44 @@ SimpleValidate.Validators = {
             }
         }
     },
+    'usernameexists': {
+        test: function(input){
+          if(SimpleValidate.Validators["username"].check(input.val())) {
+            $.post('/check_username_exists/',{
+              "username":input.val(),
+              // {% csrf_token %} used in django
+              "csrfmiddlewaretoken":$("input[name=csrfmiddlewaretoken]").val()
+            },function(data){
+              if(!data.exists) {
+                  input.trigger("valid");
+              } else {
+                  input.trigger("invalid","Username is taken.");
+              }
+            },'JSON');
+          } else {
+            input.trigger("invalid","Username invalid.");
+          }
+        }
+    },
+    'emailexists': {
+        test: function(input){
+            if(SimpleValidate.Validators["email"].check(input.val())) {
+              $.post('/check_email_exists/',{
+                "email":input.val(),
+                // {% csrf_token %} used in django
+                "csrfmiddlewaretoken":$("input[name=csrfmiddlewaretoken]").val()
+              },function(data){
+                if(!data.exists) {
+                    input.trigger("valid");
+                } else {
+                    input.trigger("invalid","Email already exists.");
+                }
+              },'JSON');
+            } else {
+              input.trigger("invalid","Email invalid.");
+            }
+        }
+    },
     'creditcard': {
         test: function(input) {
             if(SimpleValidate.Validators["numeric"].check(input.val())) {

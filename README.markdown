@@ -1,4 +1,4 @@
--- SimpleTools --
+## SimpleTools
 
 SimpleTools are the Javascript tools written for SimpleGeo's website. The goal
 is to have something that is dead simple and doesn't have more than necessary.
@@ -28,15 +28,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
---- Requirements ---
+### Requirements
 
 The only requirement is jQuery. It's not tightly coupled with jQuery, but uses
 the selector engine, and some custom events. This could easily be ported to lib
 independence.
 
---- SimpleValidator ---
+### SimpleValidator
 
-SimpleValidator is meant to give a simple way of validating form inputs. The 
-inspiration behind the SimpleValidator is banksimple's ValidateSimple. 
+SimpleValidator is meant to give a simple way of validating form inputs. The
+inspiration behind the SimpleValidator is banksimple's ValidateSimple.
 
 ValidateSimple relies on mootools however, which SimpleGeo doesn't use.
